@@ -17,7 +17,7 @@ public class WriterTest {
 
         String name = "Patryk";
         String result = writer.sayHello(name);
-        Assert.assertEquals("Expected hello message is invalid", result, "Hello Patryk!");
+        Assert.assertEquals("Expected hello message is invalid", result, "Hello, Patryk!");
 
     }
 
@@ -26,7 +26,7 @@ public class WriterTest {
 
         String name = "";
         String result = writer.sayHello("");
-        Assert.assertEquals("my friend! test failed", "Hello my friend!", result);
+        Assert.assertEquals("my friend! test failed", "Hello, my friend!", result);
     }
 
     @Test
@@ -34,29 +34,38 @@ public class WriterTest {
 
         String name = null;
         String result = writer.sayHello(name);
-        Assert.assertEquals("NULL test failed", "Hello my friend!", result);
+        Assert.assertEquals("NULL test failed", "Hello, my friend!", result);
     }
 
     @Test
     public void sayHelloWithCapitalName() {
         String name = "PATRYK";
         String result = writer.sayHello(name);
-        Assert.assertEquals("Capital letter test failed", "HELLO PATRYK!", result);
+        Assert.assertEquals("Capital letter test failed", "HELLO, PATRYK!", result);
     }
 
     @Test
     public void sayHelloWithSpaceInName() {
         String name = " ";
         String result = writer.sayHello("");
-        Assert.assertEquals("test with space in name failed", "Hello my friend!", result);
+        Assert.assertEquals("test with space in name failed", "Hello, my friend!", result);
     }
 
     @Test
     public void sayHelloWithMultiplySpaceInName() {
         String name = "   ";
-        String result = writer.sayHello("");
-        Assert.assertEquals("test with four spaces in name failed", "Hello my friend!", result);
+        String result = writer.sayHello(name);
+        Assert.assertEquals("test with four spaces in name failed", "Hello, my friend!", result);
     }
+
+
+    @Test
+    public void sayHelloWithMultiName() {
+        String name = "Patryk,Pawel,Szymon";
+        String result = writer.sayHello(name);
+        Assert.assertEquals("test with four spaces in name failed", "Hello, Patryk, Pawel and Szymon!", result);
+    }
+
 
 
 }
