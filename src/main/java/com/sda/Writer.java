@@ -10,14 +10,9 @@ public class Writer {
         String[] nameTable = name != null ? name.split(",") : new String[1];
         String nameSection = nameTable.length == 1 ? name : convertToMessage(nameTable);
         String greetings = "Hello, ";
-
         if (StringUtils.isBlank(nameSection)) {
             nameSection = "my friend";
         }
-        if (StringUtils.isAllUpperCase(name)) {
-            greetings = StringUtils.upperCase(greetings);
-        }
-
         String out = greetings + nameSection + "!";
         return isAllUpperCase(nameTable) ? StringUtils.upperCase(out) : out;
     }

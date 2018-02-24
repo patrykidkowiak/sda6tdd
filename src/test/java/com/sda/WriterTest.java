@@ -60,10 +60,17 @@ public class WriterTest {
 
 
     @Test
-    public void sayHelloWithMultiName() {
+    public void sayHelloWithMultiNames() {
         String name = "Patryk,Pawel,Szymon";
         String result = writer.sayHello(name);
-        Assert.assertEquals("test with four spaces in name failed", "Hello, Patryk, Pawel and Szymon!", result);
+        Assert.assertEquals("test with multi name", "Hello, Patryk, Pawel and Szymon!", result);
+    }
+
+    @Test
+    public void sayHelloWithMultiUpperCaseNames() {
+        String name = "PATRYK,PAWEL,SZYMON";
+        String result = writer.sayHello(name);
+        Assert.assertEquals("test with multi name with capital letter", "HELLO, PATRYK, PAWEL AND SZYMON!", result);
     }
 
 
