@@ -55,7 +55,7 @@ public class CalcServiceTest {
 
     @Test
     public void CaclRandomCharTest(){
-        String input ="c 3 r;w 2 kiwi;tt 1 jablko";
+        String input ="c3;w 2 kiwi;tt 1 jablko";
         int result = calcService.calculate(input);
         Assert.assertEquals("Number with random char test failed",6,result);
     }

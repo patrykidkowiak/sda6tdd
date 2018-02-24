@@ -6,7 +6,10 @@ import java.util.stream.Stream;
 
 public class CalcService {
     public int calculate(String text) {
-        String[] table = StringUtils.isNotEmpty(text) ? text.split(";| ") : new String[1];
-        return Stream.of(table).filter(e-> StringUtils.isNumeric(e)).mapToInt(e -> Integer.parseInt(e)).sum();
+        String[] table = StringUtils.isNotBlank(text) ? text.split(";") : new String[0];
+        return Stream.of(table)
+                .map(e-> e.replaceAll("[^0-9.]", ""))
+                .mapToInt(e -> Integer.parseInt(e))
+                .sum();
     }
 }
