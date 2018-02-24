@@ -6,7 +6,7 @@ public class Writer {
     public String sayHello(String name) {
         String nameMessage = name;
         String greetings = "Hello ";
-        if(nameMessage==null || "".equals(nameMessage)){
+        if(StringUtils.isBlank(nameMessage)){
             nameMessage="my friend";
         } else if(StringUtils.isAllUpperCase(name)){
             greetings=StringUtils.upperCase(greetings);

@@ -26,7 +26,7 @@ public class WriterTest {
 
         String name = "";
         String result = writer.sayHello("");
-        Assert.assertEquals("my friend!", "Hello my friend!", result);
+        Assert.assertEquals("my friend! test failed", "Hello my friend!", result);
     }
 
     @Test
@@ -42,6 +42,20 @@ public class WriterTest {
         String name = "PATRYK";
         String result = writer.sayHello(name);
         Assert.assertEquals("Capital letter test failed", "HELLO PATRYK!", result);
+    }
+
+    @Test
+    public void sayHelloWithSpaceInName() {
+        String name = " ";
+        String result = writer.sayHello("");
+        Assert.assertEquals("test with space in name failed", "Hello my friend!", result);
+    }
+
+    @Test
+    public void sayHelloWithMultiplySpaceInName() {
+        String name = "   ";
+        String result = writer.sayHello("");
+        Assert.assertEquals("test with four spaces in name failed", "Hello my friend!", result);
     }
 
 
