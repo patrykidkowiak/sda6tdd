@@ -4,32 +4,51 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Bank {
-    public String name;
+    private String name;
     private static int idCounter;
-    public List<User> users;
-    public List<Account> accounts;
+    private UserService userService;
+    private AccountService accountService;
 
     public Bank(String name) {
         this.name = name;
-        this.users= new ArrayList<>();
-        this.accounts=new ArrayList<>();
+        this.userService = new UserService();
+        this.accountService = new AccountService();
     }
 
-    public boolean addUser(User user){
-        boolean result = false;
-        if (user !=null){
-            user.setId(idCounter++);
-            users.add(user);
-            result=true;
-        }
-        return result;
+    public boolean addUser(User user) {
+        return userService.addUser(user);
     }
 
-    public List<User> getUsers() {
-        return users;
+    public AccountService getAccountService() {
+        return accountService;
     }
 
-    public List<Account> getAccounts() {
-        return accounts;
+    public UserService getUserService() {
+        return userService;
     }
+
+    public boolean createAccount(int userId, Account account) {
+                boolean result = false;
+                if (userService.isUserPresent(userId)) {
+                        result = accountService.addAccount(account);
+                    }
+               return result;
+           }
+
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
+
+    public void setAccountService(AccountService accountService) {
+        this.accountService = accountService;
+    }
+
+    public int getNumberOfUsers() {
+        return userService.getNumberOfUsers();
+    }
+
+    public int getNumberOfAccounts() {
+        return accountService.getNumberOfAccounts();
+    }
+
 }
