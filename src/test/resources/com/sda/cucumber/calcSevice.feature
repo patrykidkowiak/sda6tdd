@@ -29,3 +29,13 @@ Feature: CalcService
     And I pass text with letters value
     When I execute calculate method
     Then I get correct result for text with letters
+
+  Scenario Outline: Should check mixed values
+    Given I initialize CalcService
+    And I pass <text> value
+    When I execute calculate method
+    Then I get <result> as result
+    Examples:
+      | text                        | result |
+      | 2 jablka;3jajka;5ziemniakow | 10     |
+      | 3a;2;4;5b                   | 14     |

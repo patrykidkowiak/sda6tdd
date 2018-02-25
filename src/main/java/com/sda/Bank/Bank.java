@@ -1,5 +1,7 @@
 package com.sda.Bank;
 
+import cucumber.api.java.en_old.Ac;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +37,22 @@ public class Bank {
                return result;
            }
 
+    public boolean changeAmount(Account account, int amount){
+        boolean result=false;
+        if (accountService.isAccountPresent(account.getId())){
+            account.setAmount(account.getAmount()+amount);
+            result=true;
+        }
+        return result;
+    }
+
+
+
+    public int accountAmount(Account account){
+        return account.getAmount();
+    }
+
+
     public void setUserService(UserService userService) {
         this.userService = userService;
     }
@@ -49,6 +67,10 @@ public class Bank {
 
     public int getNumberOfAccounts() {
         return accountService.getNumberOfAccounts();
+    }
+
+    public Account getAccount(int accountId){
+        return accountService.getAccount(accountId);
     }
 
 }
